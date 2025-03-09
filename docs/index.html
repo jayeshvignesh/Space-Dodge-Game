@@ -86,10 +86,10 @@ async def custom_site():
 
     apk = "galaxy_fighters.apk"
 
-    bundle = "galaxy_fighters"
+    bundle = "docs"
 
     # the C or js loader could do that but be explicit.
-    appdir = Path(f"/data/data/{bundle}") # /data/data/galaxy_fighters
+    appdir = Path(f"/Space-Dodge-Game/{bundle}") # /data/data/galaxy_fighters
     appdir.mkdir()
 
 
@@ -125,7 +125,7 @@ async def custom_site():
     while not track.ready:
         pg_bar(track.pos)
         compose()
-        await asyncio.sleep(.1)
+        await asyncio.sleep(0)
 
     # fill it up in case it was cached and instant download
     pg_bar(track.len)
@@ -139,9 +139,9 @@ async def custom_site():
     # wait preloading complete
     # that includes images and wasm compilation of bundled modules
     while embed.counter()<0:
-        await asyncio.sleep(.1)
+        await asyncio.sleep(0)
 
-    main = appdir / "assets" / "main.py"
+    main = appdir / "Assets" / "main.py"
 
     # start async top level machinery and add a console.
     await TopLevel_async_handler.start_toplevel(platform.shell, console=window.python.config.debug)
@@ -177,7 +177,7 @@ async def custom_site():
         * Waiting for media user engagement : please click/touch page *
     """)
         while not platform.window.MM.UME:
-            await asyncio.sleep(.1)
+            await asyncio.sleep(0)
 
     # cleanup
     screen.fill( (0,0,0,0) )
